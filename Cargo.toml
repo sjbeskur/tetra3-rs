@@ -1,0 +1,18 @@
+[package]
+name = "tetra3"
+version = "0.1.0"
+edition = "2024"
+description = "A fast lost-in-space plate solver for star trackers - Rust port of ESA's tetra3"
+license = "Apache-2.0"
+repository = "https://github.com/esa/tetra3"
+
+[dependencies]
+nalgebra = "0.33"
+kiddo = "5"
+image = "0.25"
+lutz = "1"
+csv = "1"
+toml = "0.8"
+
+[dev-dependencies]
+approx = "0.5"

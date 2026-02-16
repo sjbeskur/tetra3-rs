@@ -1,0 +1,13 @@
+# Test calibration file matching the test image camera
+# 1024x768 image, ~11.43 degree FOV, centered PP, no distortion
+[camera]
+fx = 5119.0
+fy = 5119.0
+cx = 512.0
+cy = 384.0
+width = 1024
+height = 768
+
+[distortion]
+model = "opencv5"
+coefficients = [0.0, 0.0, 0.0, 0.0, 0.0]

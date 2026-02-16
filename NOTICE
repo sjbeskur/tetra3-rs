@@ -1,0 +1,16 @@
+tetra3 (Rust port)
+Copyright 2025 Samuel Beskur
+
+This product is a Rust port of tetra3, originally written in Python.
+
+Original tetra3:
+  Copyright 2019 the European Space Agency
+  Written by Gustav Pettersson at ESA
+  Licensed under the Apache License, Version 2.0
+  Source: https://github.com/esa/tetra3
+
+Based on the Tetra algorithm:
+  J. Brown, K. Stubis, and K. Cahoy,
+  "TETRA: Star Identification with Hash Tables",
+  Proceedings of the AIAA/USU Conference on Small Satellites, 2017.
+  https://digitalcommons.usu.edu/smallsat/2017/all2017/124/
