@@ -10,6 +10,7 @@ It contains:
   - stars.csv       (CSV: ra,dec,x,y,z,magnitude)
   - patterns.bin    (raw LE binary: u32 pattern_size + u64 num_rows + flat u32 data)
   - largest_edges.bin (raw LE binary: u64 count + flat f64 data, only if present)
+  - star_catalog_ids.csv (CSV: catalog_id, only if present in .npz)
 """
 
 import csv
@@ -29,6 +30,12 @@ def convert(input_path, output_dir):
         pattern_largest_edge = None
         try:
             pattern_largest_edge = data["pattern_largest_edge"]
+        except KeyError:
+            pass
+
+        star_catalog_ids = None
+        try:
+            star_catalog_ids = data["star_catalog_IDs"]
         except KeyError:
             pass
 
@@ -76,6 +83,10 @@ def convert(input_path, output_dir):
         print(f"  Largest edge data: yes ({len(pattern_largest_edge)} entries)")
     else:
         print("  Largest edge data: no")
+    if star_catalog_ids is not None:
+        print(f"  Star catalog IDs: yes ({len(star_catalog_ids)} entries)")
+    else:
+        print("  Star catalog IDs: no")
 
     # Create output directory
     os.makedirs(output_dir, exist_ok=True)
@@ -96,6 +107,12 @@ def convert(input_path, output_dir):
         write_largest_edges_bin(
             os.path.join(output_dir, "largest_edges.bin"),
             pattern_largest_edge)
+
+    # 5. star_catalog_ids.csv (optional)
+    if star_catalog_ids is not None:
+        write_catalog_ids_csv(
+            os.path.join(output_dir, "star_catalog_ids.csv"),
+            star_catalog_ids)
 
     print("Done!")
 
@@ -178,6 +195,16 @@ def write_largest_edges_bin(path, largest_edge):
     with open(path, "wb") as f:
         f.write(struct.pack("<Q", len(edge_f64)))   # u64 count
         f.write(edge_f64.astype("<f8").tobytes())    # flat f64 data, explicit LE
+
+
+def write_catalog_ids_csv(path, catalog_ids):
+    """Write star catalog IDs as a single-column CSV."""
+    ids = catalog_ids.astype(np.uint32)
+    with open(path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["catalog_id"])
+        for cid in ids:
+            writer.writerow([int(cid)])
 
 
 if __name__ == "__main__":
