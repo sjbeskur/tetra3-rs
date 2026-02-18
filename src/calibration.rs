@@ -180,7 +180,7 @@ impl CameraCalibration {
         PreparedCentroids {
             centroids: corrected,
             fov: self.fov_degrees(),
-            fov_max_error: 0.1,
+            fov_max_error: 1.0,
         }
     }
 }

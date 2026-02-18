@@ -10,6 +10,7 @@
 //!   --timeout <ms>           Solve timeout in milliseconds
 //!   --stars <n>              Pattern checking stars (default: 8)
 //!   --cal <path>             TOML camera calibration file
+//!   --match-threshold <p>    Match acceptance threshold (default: 1e-3)
 //!
 //! Example:
 //!   cargo run --example tetrars -- data/tetra_db/ stars.png --fov 12.0
@@ -34,6 +35,7 @@ fn main() {
         eprintln!("  --timeout <ms>           Solve timeout in milliseconds");
         eprintln!("  --stars <n>              Pattern checking stars (default: 8)");
         eprintln!("  --cal <path>             TOML camera calibration file");
+        eprintln!("  --match-threshold <p>    Match acceptance threshold (default: 1e-3)");
         std::process::exit(1);
     }
 
@@ -72,6 +74,10 @@ fn main() {
             "--cal" => {
                 i += 1;
                 cal_path = Some(args[i].clone());
+            }
+            "--match-threshold" => {
+                i += 1;
+                solve_params.match_threshold = args[i].parse().expect("invalid --match-threshold value");
             }
             other => {
                 eprintln!("Unknown option: {}", other);
