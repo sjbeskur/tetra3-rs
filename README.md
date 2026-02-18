@@ -91,6 +91,13 @@ Options:
   --cal <path>             TOML camera calibration file
 ```
 
+
+e.g.
+```
+cargo run --release --example tetrars data/fov40/ outputs/pixelink.png --cal outputs/pixelink.toml --match-threshold 1e-2 --stars 16B
+```
+
+
 ## License
 
 Apache 2.0. See [LICENSE.txt](LICENSE.txt) and [NOTICE](NOTICE) for attribution to the original ESA project.
