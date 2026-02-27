@@ -6,6 +6,16 @@ description = "A fast lost-in-space plate solver for star trackers - Rust port o
 license = "Apache-2.0"
 repository = "https://github.com/esa/tetra3"
 
+exclude = [
+    "data/*",
+    "doex/*",
+    ".venv/*",
+    ".venv/*",
+    "notebooks/*",
+    "tools/*"
+]
+
+
 [dependencies]
 nalgebra = "0.33"
 kiddo = "5"
