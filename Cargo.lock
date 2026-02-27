@@ -620,6 +620,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "lostinspace"
+version = "0.1.0"
+dependencies = [
+ "approx",
+ "csv",
+ "image",
+ "kiddo",
+ "lutz",
+ "nalgebra",
+ "toml",
+]
+
+[[package]]
 name = "lutz"
 version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1153,19 +1166,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-ident",
-]
-
-[[package]]
-name = "tetra3"
-version = "0.1.0"
-dependencies = [
- "approx",
- "csv",
- "image",
- "kiddo",
- "lutz",
- "nalgebra",
- "toml",
 ]
 
 [[package]]

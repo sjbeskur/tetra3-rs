@@ -1,5 +1,5 @@
 [package]
-name = "tetra3"
+name = "lostinspace"
 version = "0.1.0"
 edition = "2024"
 description = "A fast lost-in-space plate solver for star trackers - Rust port of ESA's tetra3"
